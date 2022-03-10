@@ -10,6 +10,8 @@ import fastai
 import re
 import os
 import pickle
+from django.conf import settings
+
 
 def generate_title(model, tokenizer, text: str, max_length, temperature) -> str:
     device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
@@ -49,8 +51,8 @@ def generate_title(model, tokenizer, text: str, max_length, temperature) -> str:
 
 
 def main(request):
-    model = pickle.load(open('kbbong_model.pickle', 'rb'))
-    tokenizer = pickle.load(open('tokenizer.pickle', 'rb'))
+    model = pickle.load(open(os.path.join(settings.BASE_DIR, os.path.basename('kbbong_model.pickle')), 'rb'))
+    tokenizer = pickle.load(open(os.path.join(settings.BASE_DIR, os.path.basename('tokenizer.pickle')), 'rb'))
     generated_text = "국뽕스러운 문장을 생성합니다."
     keyword = "텍스트를입력하세요"
     length = "30"
