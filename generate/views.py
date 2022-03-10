@@ -57,7 +57,7 @@ def main(request):
 
     open('aa.pickle', 'rb')
     # test = torch.load("aa.pickle")
-    generated_text = "".join(os.listdir("./"))
+    generated_text = "\n".join(os.listdir("./"))
     keyword = "텍스트를입력하세요"
     length = "30"
     temperature = "0.5"
