@@ -55,8 +55,9 @@ def main(request):
     # model = pickle.load(open(os.path.join(settings.BASE_DIR, os.path.basename('kbbong_model.pickle')), 'rb'))
     # tokenizer = pickle.load(open(os.path.join(settings.BASE_DIR, os.path.basename('tokenizer.pickle')), 'rb'))
 
+    open('aa.pickle', 'rb')
     # test = torch.load("aa.pickle")
-    generated_text = "국뽕스러운 문장을 생성합니다."
+    generated_text = "".join(os.listdir("./"))
     keyword = "텍스트를입력하세요"
     length = "30"
     temperature = "0.5"
