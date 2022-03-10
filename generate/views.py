@@ -54,14 +54,8 @@ import torchvision.models as models
 import pickle
 
 def main(request):
-    # model = pickle.load(open(os.path.join(settings.BASE_DIR, os.path.basename('kbbong_model.pickle')), 'rb'))
-    # tokenizer = pickle.load(open(os.path.join(settings.BASE_DIR, os.path.basename('tokenizer.pickle')), 'rb'))
-
-    a = [1, 2, 3, 4]
-    with open("aaa.pickle", "wb") as f:
-        pickle.dump(a, f)
-    with open("aaa.pickle", "rb") as f:
-        data = pickle.load(f)
+    model = pickle.load('kbbong_model.pickle', 'rb')
+    tokenizer = pickle.load('tokenizer.pickle', 'rb')
     generated_text = os.getcwd()
     keyword = "텍스트를입력하세요"
     length = "30"
@@ -70,7 +64,7 @@ def main(request):
         keyword = request.POST.get("keyword")
         length = int(request.POST.get("length"))
         temperature = float(request.POST.get("temperature"))
-        # generated_text = generate_title(model, tokenizer, text=keyword, max_length=length, temperature=temperature)
+        generated_text = generate_title(model, tokenizer, text=keyword, max_length=length, temperature=temperature)
     return render(request, 'generate_page.html', {"generated_text" : generated_text, "before_keyword":keyword, "before_length":length, "before_temperature":temperature})
 
 def eda(request):
