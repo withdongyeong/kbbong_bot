@@ -49,10 +49,10 @@ def generate_title(model, tokenizer, text: str, max_length, temperature) -> str:
 
 
 def main(request):
-    with open('kbbong_model.pickle', 'rb') as file:
-        model = pickle.load(file)
-    with open('tokenizer.pickle', 'rb') as file:
-        tokenizer = pickle.load(file)
+    # with open('kbbong_model.pickle', 'rb') as file:
+    #     model = pickle.load(file)
+    # with open('tokenizer.pickle', 'rb') as file:
+    #     tokenizer = pickle.load(file)
     generated_text = "국뽕스러운 문장을 생성합니다."
     keyword = "텍스트를입력하세요"
     length = "30"
@@ -61,7 +61,7 @@ def main(request):
         keyword = request.POST.get("keyword")
         length = int(request.POST.get("length"))
         temperature = float(request.POST.get("temperature"))
-        generated_text = generate_title(model, tokenizer, text=keyword, max_length=length, temperature=temperature)
+        # generated_text = generate_title(model, tokenizer, text=keyword, max_length=length, temperature=temperature)
     return render(request, 'generate_page.html', {"generated_text" : generated_text, "before_keyword":keyword, "before_length":length, "before_temperature":temperature})
 
 def eda(request):
