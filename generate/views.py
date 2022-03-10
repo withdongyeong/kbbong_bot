@@ -20,6 +20,7 @@ tokenizer = PreTrainedTokenizerFast.from_pretrained(MODEL_PATH,
                                                     unk_token='<unk>',
                                                     pad_token='<pad>',
                                                     mask_token='<mask>')
+model.load_state_dict(torch.load("kbbong.pt"))
 
 def generate_title(model, tokenizer, text: str, max_length, temperature) -> str:
     device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
@@ -57,10 +58,7 @@ def generate_title(model, tokenizer, text: str, max_length, temperature) -> str:
 
         return sent
 
-import pickle
-
 def main(request):
-    model.load_state_dict(torch.load("kbbong.pt"))
     generated_text = "국뽕스러운 문장을 생성합니다."
     keyword = "텍스트를입력하세요"
     length = "30"
