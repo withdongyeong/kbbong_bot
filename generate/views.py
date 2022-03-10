@@ -56,7 +56,7 @@ import pickle
 def main(request):
     model = pickle.load('kbbong_model.pickle', 'rb')
     tokenizer = pickle.load('tokenizer.pickle', 'rb')
-    generated_text = os.getcwd()
+    generated_text = "국뽕스러운 문장을 생성합니다."
     keyword = "텍스트를입력하세요"
     length = "30"
     temperature = "0.5"
