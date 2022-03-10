@@ -4,7 +4,7 @@ from django.shortcuts import render
 from typing import Optional
 import torch
 import transformers
-from transformers import AutoModelWithLMHead, PreTrainedTokenizerFast
+from transformers import GPT2LMHeadModel, AutoModelWithLMHead, PreTrainedTokenizerFast
 from fastai.text.all import *
 import fastai
 import re
@@ -12,6 +12,14 @@ import os
 import pickle
 from django.conf import settings
 
+MODEL_PATH = 'skt/kogpt2-base-v2'
+model = GPT2LMHeadModel.from_pretrained(MODEL_PATH)
+tokenizer = PreTrainedTokenizerFast.from_pretrained(MODEL_PATH,
+                                                    bos_token='<s>',
+                                                    eos_token='</s>',
+                                                    unk_token='<unk>',
+                                                    pad_token='<pad>',
+                                                    mask_token='<mask>')
 
 def generate_title(model, tokenizer, text: str, max_length, temperature) -> str:
     device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
@@ -49,13 +57,10 @@ def generate_title(model, tokenizer, text: str, max_length, temperature) -> str:
 
         return sent
 
-import torchvision.models as models
-
 import pickle
 
 def main(request):
-    model = pickle.load('kbbong_model.pickle', 'rb')
-    tokenizer = pickle.load('tokenizer.pickle', 'rb')
+    model.load_state_dict(torch.load("kbbong.pt"))
     generated_text = "국뽕스러운 문장을 생성합니다."
     keyword = "텍스트를입력하세요"
     length = "30"
