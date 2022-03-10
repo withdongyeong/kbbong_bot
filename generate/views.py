@@ -49,10 +49,10 @@ def generate_title(model, tokenizer, text: str, max_length, temperature) -> str:
 
 
 def main(request):
-    # with open('kbbong_model.pickle', 'rb') as file:
-    #     model = pickle.load(file)
-    # with open('tokenizer.pickle', 'rb') as file:
-    #     tokenizer = pickle.load(file)
+    with open('kbbong_model.pickle', 'rb') as file:
+        model = pickle.load(file)
+    with open('tokenizer.pickle', 'rb') as file:
+        tokenizer = pickle.load(file)
     generated_text = "국뽕스러운 문장을 생성합니다."
     keyword = "텍스트를입력하세요"
     length = "30"
