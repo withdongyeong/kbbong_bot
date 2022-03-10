@@ -51,11 +51,17 @@ def generate_title(model, tokenizer, text: str, max_length, temperature) -> str:
 
 import torchvision.models as models
 
+import pickle
+
 def main(request):
     # model = pickle.load(open(os.path.join(settings.BASE_DIR, os.path.basename('kbbong_model.pickle')), 'rb'))
     # tokenizer = pickle.load(open(os.path.join(settings.BASE_DIR, os.path.basename('tokenizer.pickle')), 'rb'))
 
-    test = torch.load("/app/aa.pickle")
+    a = [1, 2, 3, 4]
+    with open("aaa.pickle", "wb") as f:
+        pickle.dump(a, f)
+    with open("aaa.pickle", "rb") as f:
+        data = pickle.load(f)
     generated_text = os.getcwd()
     keyword = "텍스트를입력하세요"
     length = "30"
