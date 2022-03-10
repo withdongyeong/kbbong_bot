@@ -1,0 +1,9 @@
+torch==1.8.1+cpu
+-f https://download.pytorch.org/whl/torch_stable.html
+django-bootstrap4
+django
+transformers
+fastai
+gunicorn
+whitenoise
+django-heroku

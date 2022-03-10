@@ -1,0 +1,1 @@
+web: gunicorn kbbong_bot.wsgi --log-file -
