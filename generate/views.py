@@ -61,7 +61,7 @@ def main(request):
         keyword = request.POST.get("keyword")
         length = int(request.POST.get("length"))
         temperature = float(request.POST.get("temperature"))
-        # generated_text = generate_title(model, tokenizer, text=keyword, max_length=length, temperature=temperature)
+        generated_text = generate_title(model, tokenizer, text=keyword, max_length=length, temperature=temperature)
     return render(request, 'generate_page.html', {"generated_text" : generated_text, "before_keyword":keyword, "before_length":length, "before_temperature":temperature})
 
 def eda(request):
