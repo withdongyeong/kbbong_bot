@@ -56,8 +56,8 @@ def main(request):
     # tokenizer = pickle.load(open(os.path.join(settings.BASE_DIR, os.path.basename('tokenizer.pickle')), 'rb'))
 
     # open('aa.pickle', 'rb')
-    test = torch.load("aa.pickle")
-    generated_text = "\n".join(os.listdir("./"))
+    # test = torch.load("aa.pickle")
+    generated_text = os.getcwd()
     keyword = "텍스트를입력하세요"
     length = "30"
     temperature = "0.5"
