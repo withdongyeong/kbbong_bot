@@ -20,7 +20,8 @@ tokenizer = PreTrainedTokenizerFast.from_pretrained(MODEL_PATH,
                                                     unk_token='<unk>',
                                                     pad_token='<pad>',
                                                     mask_token='<mask>')
-model.load_state_dict(torch.load("kbbong.pt"))
+device = torch.device('cpu')
+model.load_state_dict(torch.load("kbbong.pt"), map_location=device)
 
 def generate_title(model, tokenizer, text: str, max_length, temperature) -> str:
     device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
